@@ -16,7 +16,7 @@ public class GameBehaviour : MonoBehaviour
     [SerializeField] private Button newGameButton;
     [SerializeField] private GameObject enemy;
 
-    private List<Vector3> _enemyPositions = new List<Vector3>(4)
+    private readonly List<Vector3> _enemyPositions = new(4)
     {
         new Vector3(0.0f, 1.0f, 13.0f),
         new Vector3(13.0f, 1.0f, 0.0f),
@@ -84,6 +84,7 @@ public class GameBehaviour : MonoBehaviour
             Instantiate(enemy, _enemyPositions[Random.Range(0, 4)], Quaternion.identity);
             yield return new WaitForSeconds(10f);
         }
+        // ReSharper disable once IteratorNeverReturns
     }
 
     private void ShowEndPanel()
